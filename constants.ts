@@ -39,14 +39,14 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'proj-02',
-    title: 'Em Breve',
-    category: 'Em Breve',
-    problem: '',
-    tools: [''],
-    methodology: '',
-    results: '',
-    thumbnailUrl: 'https://picsum.photos/800/600?random=2',
-    // No embed for this one, just a case study
+    title: 'Página institucional para Oficina de Lataria e Pintura',
+    category: 'Desenvolvimento Web',
+    problem: 'Necessidade de uma presença digital profissional para a oficina.',
+    tools: ['HTML', 'CSS', 'JavaScript', 'React'],
+    methodology: 'Desenvolvimento responsivo com foco em usabilidade e SEO. Implementação de contato por Whatsapp e localização.',
+    results: 'Aumento da visibilidade online e geração de leads através do site.',
+    thumbnailUrl: 'https://i.ibb.co/xKsd16qd/Captura-de-tela-2026-01-24-102842.png',
+    embedUrl: 'https://oficinamclaren.netlify.app/'
   }
 ];
 
