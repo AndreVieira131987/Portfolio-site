@@ -115,7 +115,7 @@ const Projects: React.FC = () => {
                       <div className="mt-8">
                         <h4 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
                           <BarChart size={20} className="text-brand-600"/> 
-                          Dashboard Interativo com dados fictícios
+                          Prévia do projeto
                         </h4>
                         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 bg-slate-100">
                           <iframe 
