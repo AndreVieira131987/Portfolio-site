@@ -1,3 +1,5 @@
+export type Language = 'pt' | 'en';
+
 export interface Project {
   id: string;
   title: string;
@@ -10,11 +12,38 @@ export interface Project {
   thumbnailUrl: string;
 }
 
-export interface Skill {
-  name: string;
-  level: number; // 0-100
-  category: 'Hard' | 'Soft' | 'Tech';
-  fullMark: number;
+export type IconKey =
+  | 'code'
+  | 'server'
+  | 'database'
+  | 'bot'
+  | 'users'
+  | 'briefcase'
+  | 'graduation'
+  | 'store'
+  | 'package'
+  | 'lightbulb';
+
+export interface SkillCategory {
+  icon: IconKey;
+  title: string;
+  items: string[];
+}
+
+export interface AboutCard {
+  icon: IconKey;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+export interface ExperienceItem {
+  icon: IconKey;
+  role: string;
+  company: string;
+  period: string;
+  location: string;
+  bullets: string[];
 }
 
 export interface ChatMessage {
