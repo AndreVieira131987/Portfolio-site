@@ -7,14 +7,15 @@
     <title>Andre Vieira | Full Stack Developer</title>
     <meta name="description" content="Andre Vieira - Full Stack Developer specializing in Node.js, React, PostgreSQL and AI agent orchestration (Claude Code, LangChain, n8n).">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Geist', 'Inter', 'sans-serif'],
+              mono: ['Geist Mono', 'ui-monospace', 'monospace'],
             },
             colors: {
               brand: {
@@ -43,11 +44,26 @@
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-8px)' },
               },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { boxShadow: '0 0 0 0 rgba(52, 211, 153, 0.6)' },
+                '50%': { boxShadow: '0 0 0 6px rgba(52, 211, 153, 0)' },
+              },
+              'fade-in': {
+                from: { opacity: 0 },
+                to: { opacity: 1 },
+              },
             },
             animation: {
               blob: 'blob 8s infinite',
               'spin-slow': 'spin-slow 12s linear infinite',
               'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+              marquee: 'marquee 26s linear infinite',
+              'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+              'fade-in': 'fade-in 1.5s ease-out forwards',
             },
           }
         }
@@ -59,14 +75,14 @@
         scroll-padding-top: 5rem; /* Offset for fixed header (approx 80px) */
       }
       body {
-        background-color: #020617;
-        color: #f1f5f9;
+        background-color: #000000;
+        color: #f5f5f5;
       }
       .glass-panel {
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(148, 163, 184, 0.15);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       .animation-delay-2000 {
         animation-delay: 2s;
@@ -79,14 +95,14 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #0f172a;
+        background: #000000;
       }
       ::-webkit-scrollbar-thumb {
-        background: #475569;
+        background: #3f3f46;
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #64748b;
+        background: #52525b;
       }
     </style>
   <script type="importmap">

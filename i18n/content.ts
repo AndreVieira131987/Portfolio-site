@@ -1,34 +1,53 @@
-import { AboutCard, ExperienceItem, Language, Project, SkillCategory } from '../types';
+import {
+  AboutTrait,
+  ExperienceItem,
+  Language,
+  Project,
+  ProcessStep,
+  QuickLink,
+  ServiceItem,
+  SkillCategory,
+} from '../types';
 
 interface NavContent {
-  home: string;
+  work: string;
   about: string;
   skills: string;
-  experience: string;
-  projects: string;
+  process: string;
   contact: string;
+  resumeAria: string;
   hire: string;
 }
 
-interface HeroContent {
+interface StatusContent {
   badge: string;
-  titleLine1: string;
-  titleHighlight: string;
-  titleLine2: string;
-  subtitle: string;
-  ctaProjects: string;
-  ctaAbout: string;
-  stack: string[];
-  cardDeployLabel: string;
-  cardDeployValue: string;
-  cardAiLabel: string;
-  cardAiValue: string;
+}
+
+interface HeroContent {
+  headline: string;
+  subheadline: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  stats: { value: string; label: string }[];
+}
+
+interface TrustedByContent {
+  heading: string;
+  items: string[];
+}
+
+interface ServicesContent {
+  heading: string;
+  subheading: string;
+  items: ServiceItem[];
 }
 
 interface AboutContent {
   heading: string;
-  subheading: string;
-  cards: AboutCard[];
+  kicker: string;
+  paragraphs: string[];
+  traits: AboutTrait[];
+  learnMore: string;
 }
 
 interface ExperienceContent {
@@ -47,6 +66,7 @@ interface SkillsContent {
 interface ProjectsContent {
   heading: string;
   subheading: string;
+  seeAll: string;
   viewCase: string;
   close: string;
   problemLabel: string;
@@ -57,9 +77,20 @@ interface ProjectsContent {
   items: Project[];
 }
 
-interface ContactContent {
+interface ProcessContent {
   heading: string;
   subheading: string;
+  steps: ProcessStep[];
+  codeLines: string[];
+  dashboardTitle: string;
+  metrics: { label: string; value: string }[];
+}
+
+interface ContactContent {
+  finalCtaHeading: string;
+  finalCtaSubtext: string;
+  scheduleCall: string;
+  sendMessage: string;
   emailLabel: string;
   phoneLabel: string;
   locationLabel: string;
@@ -77,6 +108,8 @@ interface ContactContent {
 interface FooterContent {
   rights: string;
   builtWith: string;
+  quickLinksHeading: string;
+  quickLinks: QuickLink[];
 }
 
 interface ChatContent {
@@ -90,11 +123,15 @@ interface ChatContent {
 
 export interface Content {
   nav: NavContent;
+  status: StatusContent;
   hero: HeroContent;
+  trustedBy: TrustedByContent;
+  services: ServicesContent;
   about: AboutContent;
   experience: ExperienceContent;
   skills: SkillsContent;
   projects: ProjectsContent;
+  process: ProcessContent;
   contact: ContactContent;
   footer: FooterContent;
   chat: ChatContent;
@@ -104,62 +141,70 @@ export interface Content {
 export const CONTENT: Record<Language, Content> = {
   pt: {
     nav: {
-      home: 'Início',
+      work: 'Trabalhos',
       about: 'Sobre',
       skills: 'Habilidades',
-      experience: 'Experiência',
-      projects: 'Projetos',
+      process: 'Processo',
       contact: 'Contato',
-      hire: 'Contrate-me',
+      resumeAria: 'Baixar currículo',
+      hire: 'Vamos conversar',
+    },
+    status: {
+      badge: 'Disponível para trabalho',
     },
     hero: {
-      badge: 'Disponível para novos projetos',
-      titleLine1: 'Da análise de dados',
-      titleHighlight: 'ao Full Stack',
-      titleLine2: 'orquestrando IA.',
-      subtitle:
-        'Olá, sou o André Vieira. Desenvolvedor Full Stack que evoluiu da análise de dados para produtos digitais completos — dirigindo agentes de IA (Claude Code, LangChain) para arquitetar, construir e revisar soluções de ponta a ponta.',
-      ctaProjects: 'Ver Projetos',
-      ctaAbout: 'Sobre Mim',
-      stack: ['React', 'Node.js', 'PostgreSQL'],
-      cardDeployLabel: 'Deploy',
-      cardDeployValue: 'Node.js + VPS',
-      cardAiLabel: 'IA',
-      cardAiValue: 'Agentes orquestrados',
+      headline: 'Full Stack Developer',
+      subheadline:
+        'Construo aplicações completas — de interfaces em React a APIs em Node.js — e dirijo agentes de IA (Claude Code, LangChain) para arquitetar e entregar produtos com mais velocidade e qualidade.',
+      ctaPrimary: 'Ver meus projetos',
+      ctaSecondary: 'Sobre mim',
+      stats: [
+        { value: '1+', label: 'Ano como Full Stack' },
+        { value: '2', label: 'Projetos entregues' },
+        { value: '4+', label: 'Ferramentas de IA orquestradas' },
+      ],
     },
-    about: {
-      heading: 'Sobre Mim',
-      subheading: 'Uma trajetória que começou nos dados e evoluiu para o desenvolvimento full stack.',
-      cards: [
+    trustedBy: {
+      heading: 'Ferramentas que oriento no dia a dia',
+      items: ['Claude Code', 'LangChain', 'n8n', 'React', 'Node.js', 'PostgreSQL', 'Power BI', 'TypeScript'],
+    },
+    services: {
+      heading: 'No que posso ajudar',
+      subheading: 'Do backend ao dashboard, cobrindo o ciclo completo de um produto digital.',
+      items: [
         {
-          icon: 'briefcase',
-          title: 'Experiência',
-          subtitle: 'We.Go Smart Business',
-          description:
-            'Evoluí de Analista de Dados para Desenvolvedor Full Stack em menos de um ano, construindo aplicações completas com Node.js, React e PostgreSQL, do levantamento de requisitos ao deploy em VPS.',
+          icon: 'code',
+          title: 'Desenvolvimento Full Stack',
+          description: 'Aplicações completas, do banco de dados à interface, prontas para produção.',
+          items: ['Frontend em React', 'Backend em Node.js', 'PostgreSQL', 'APIs REST', 'Deploy em VPS'],
         },
         {
           icon: 'bot',
-          title: 'Orquestração de IA',
-          subtitle: 'Claude Code & LangChain',
-          description:
-            'Diferencial: dirijo agentes de IA para arquitetar, implementar e revisar funcionalidades full stack, atuando como responsável técnico do processo — foco em arquitetura, integração e qualidade.',
+          title: 'Orquestração de Agentes de IA',
+          description: 'Direciono agentes de IA para arquitetar, construir e revisar funcionalidades.',
+          items: ['Claude Code', 'LangChain', 'Automação com n8n', 'Prompt engineering', 'Revisão de qualidade'],
         },
         {
-          icon: 'graduation',
-          title: 'Formação',
-          subtitle: 'Engenharia de Software',
-          description:
-            'Cursando na UniFatecie, com previsão de conclusão em 2027. Uma base sólida em lógica de programação e arquitetura de sistemas que sustenta minha atuação full stack.',
-        },
-        {
-          icon: 'store',
-          title: 'Diferenciais',
-          subtitle: 'Visão de negócio',
-          description:
-            'Experiência prévia como Sócio-Proprietário de negócio próprio, com gestão financeira, operacional e de equipe — uma visão de produto que vai além do código.',
+          icon: 'database',
+          title: 'Dados & Business Intelligence',
+          description: 'Pipelines e dashboards que transformam dados dispersos em decisões.',
+          items: ['Dashboards Power BI', 'Modelagem SQL', 'Pipelines de ETL', 'Python (Pandas, NumPy)'],
         },
       ],
+    },
+    about: {
+      heading: 'Sobre Mim',
+      kicker: 'Curioso sobre minha trajetória?',
+      paragraphs: [
+        'Sou um Desenvolvedor Full Stack que evoluiu da análise de dados para a construção de produtos digitais completos em menos de um ano. Hoje atuo na We.Go Smart Business, onde uni a base sólida em dados a um novo domínio: Node.js, React e PostgreSQL.',
+        'Meu diferencial é dirigir agentes de IA — Claude Code, LangChain, n8n — para arquitetar, implementar e revisar funcionalidades, atuando como responsável técnico do processo em vez de codificar linha a linha. Isso acelera a entrega sem abrir mão de arquitetura sólida e qualidade.',
+      ],
+      traits: [
+        { icon: 'zap', text: 'Buscando oportunidades remotas e internacionais' },
+        { icon: 'message', text: 'Aberto a colaborações assíncronas com times distribuídos' },
+        { icon: 'smile', text: 'Direto, comunicativo e sempre disponível para conversar' },
+      ],
+      learnMore: 'Ver experiência completa',
     },
     experience: {
       heading: 'Experiência Profissional',
@@ -232,8 +277,9 @@ export const CONTENT: Record<Language, Content> = {
       ],
     },
     projects: {
-      heading: 'Projetos em Destaque',
+      heading: 'Trabalhos Selecionados',
       subheading: 'Estudos de caso reais demonstrando resolução de problemas de negócio.',
+      seeAll: 'Ver perfil no GitHub',
       viewCase: 'Ver Estudo de Caso',
       close: 'Fechar',
       problemLabel: 'O Problema',
@@ -269,10 +315,55 @@ export const CONTENT: Record<Language, Content> = {
         },
       ],
     },
+    process: {
+      heading: 'Como Eu Trabalho',
+      subheading: 'Do requisito ao deploy, um fluxo pensado para entregar rápido sem perder qualidade.',
+      steps: [
+        {
+          number: '01',
+          category: 'Descoberta & Arquitetura',
+          title: 'Entendendo requisitos e desenhando a solução',
+          description:
+            'Levanto requisitos com clientes e áreas de negócio e desenho a arquitetura — banco de dados, APIs e integrações — antes de escrever a primeira linha de código.',
+          meta: 'Semana 1',
+        },
+        {
+          number: '02',
+          category: 'Construção & Orquestração',
+          title: 'Direcionando agentes de IA para construir',
+          description:
+            'Oriento o Claude Code e LangChain para implementar as funcionalidades, revisando cada etapa — arquitetura, testes e integração — como responsável técnico do processo.',
+          meta: 'Semana 2-3',
+        },
+        {
+          number: '03',
+          category: 'Deploy & Monitoramento',
+          title: 'Entregando e acompanhando em produção',
+          description:
+            'Deploy em VPS, documentação técnica da solução e acompanhamento de métricas para garantir estabilidade após o lançamento.',
+          meta: 'Semana 4',
+        },
+      ],
+      codeLines: [
+        '$ claude-code "implementar API de checkout"',
+        '> planejando alterações em 4 arquivos',
+        '> escrevendo testes...',
+        '> revisão de arquitetura ✓',
+        '> todos os testes passaram ✓',
+      ],
+      dashboardTitle: 'Painel de Deploy',
+      metrics: [
+        { label: 'Build', value: '100%' },
+        { label: 'Uptime', value: '99.9%' },
+        { label: 'Tempo de resposta', value: '-35%' },
+      ],
+    },
     contact: {
-      heading: 'Vamos trabalhar juntos?',
-      subheading:
+      finalCtaHeading: 'Vamos criar algo incrível juntos?',
+      finalCtaSubtext:
         'Estou pronto para ajudar sua empresa a construir produtos digitais completos. Entre em contato para uma conversa.',
+      scheduleCall: 'Falar no WhatsApp',
+      sendMessage: 'Enviar mensagem',
       emailLabel: 'Email',
       phoneLabel: 'WhatsApp / Telefone',
       locationLabel: 'Localização',
@@ -289,6 +380,15 @@ export const CONTENT: Record<Language, Content> = {
     footer: {
       rights: 'Todos os direitos reservados.',
       builtWith: 'Desenvolvido com React & TailwindCSS',
+      quickLinksHeading: 'Links Rápidos',
+      quickLinks: [
+        { label: 'Trabalhos', href: '#work' },
+        { label: 'Sobre', href: '#about' },
+        { label: 'Habilidades', href: '#skills' },
+        { label: 'Processo', href: '#process' },
+        { label: 'Experiência', href: '#experience' },
+        { label: 'Contato', href: '#contact' },
+      ],
     },
     chat: {
       title: "Assistente de IA do André",
@@ -306,69 +406,77 @@ Ele atua na We.Go Smart Business, onde evoluiu de Analista de Dados para Desenvo
 Seu diferencial é orquestrar agentes de IA (Claude Code, LangChain, n8n) para arquitetar, construir e revisar soluções full stack, atuando como responsável técnico do processo de desenvolvimento.
 Suas principais competências técnicas: Node.js, React, JavaScript/TypeScript, PostgreSQL, APIs REST, deploy em VPS, além de Power BI, SQL e Python vindos da sua base em dados.
 Está cursando Engenharia de Software na UniFatecie (previsão de conclusão em 2027).
-É baseado em Curitiba, PR, e está aberto a oportunidades remotas e internacionais.
+Está baseado em Curitiba, PR, e está aberto a oportunidades remotas e internacionais.
 Responda perguntas sobre sua experiência, habilidades e projetos de forma profissional e concisa.
 Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
 `,
   },
   en: {
     nav: {
-      home: 'Home',
+      work: 'Work',
       about: 'About',
       skills: 'Skills',
-      experience: 'Experience',
-      projects: 'Projects',
+      process: 'Process',
       contact: 'Contact',
-      hire: 'Hire Me',
+      resumeAria: 'Download resume',
+      hire: "Let's connect",
+    },
+    status: {
+      badge: 'Available for work',
     },
     hero: {
-      badge: 'Available for new opportunities',
-      titleLine1: 'From data analysis',
-      titleHighlight: 'to Full Stack',
-      titleLine2: 'with AI orchestration.',
-      subtitle:
-        "Hi, I'm Andre Vieira. A Full Stack Developer who evolved from data analytics into end-to-end digital products — directing AI coding agents (Claude Code, LangChain) to architect, build, and review production-ready solutions.",
-      ctaProjects: 'View Projects',
-      ctaAbout: 'About Me',
-      stack: ['React', 'Node.js', 'PostgreSQL'],
-      cardDeployLabel: 'Deploy',
-      cardDeployValue: 'Node.js + VPS',
-      cardAiLabel: 'AI',
-      cardAiValue: 'Agents orchestrated',
+      headline: 'Full Stack Developer',
+      subheadline:
+        "I build complete applications — from React interfaces to Node.js APIs — and direct AI agents (Claude Code, LangChain) to architect and ship products faster without sacrificing quality.",
+      ctaPrimary: 'View my work',
+      ctaSecondary: 'About me',
+      stats: [
+        { value: '1+', label: 'Year as Full Stack' },
+        { value: '2', label: 'Projects shipped' },
+        { value: '4+', label: 'AI tools orchestrated' },
+      ],
     },
-    about: {
-      heading: 'About Me',
-      subheading: 'A journey that started in data and evolved into full-stack development.',
-      cards: [
+    trustedBy: {
+      heading: 'Tools I orchestrate daily',
+      items: ['Claude Code', 'LangChain', 'n8n', 'React', 'Node.js', 'PostgreSQL', 'Power BI', 'TypeScript'],
+    },
+    services: {
+      heading: 'What I Do',
+      subheading: 'From backend to dashboard, covering the full cycle of a digital product.',
+      items: [
         {
-          icon: 'briefcase',
-          title: 'Experience',
-          subtitle: 'We.Go Smart Business',
-          description:
-            'I progressed from Data Analyst to Full Stack Developer in under a year, building end-to-end applications with Node.js, React, and PostgreSQL — from requirements gathering to VPS deployment.',
+          icon: 'code',
+          title: 'Full Stack Development',
+          description: 'End-to-end applications, from the database to the interface, ready for production.',
+          items: ['React frontend', 'Node.js backend', 'PostgreSQL', 'REST APIs', 'VPS deployment'],
         },
         {
           icon: 'bot',
-          title: 'AI Orchestration',
-          subtitle: 'Claude Code & LangChain',
-          description:
-            'My differentiator: I direct AI coding agents to architect, implement, and review full-stack features, acting as the technical lead of the build process — focused on architecture, integration, and quality.',
+          title: 'AI Agent Orchestration',
+          description: 'I direct AI coding agents to architect, build, and review features.',
+          items: ['Claude Code', 'LangChain', 'n8n automation', 'Prompt engineering', 'Quality review'],
         },
         {
-          icon: 'graduation',
-          title: 'Education',
-          subtitle: 'Software Engineering',
-          description:
-            'Currently pursuing a B.S. in Software Engineering at UniFatecie, expected to graduate in 2027 — a solid foundation in programming logic and systems architecture behind my full-stack work.',
-        },
-        {
-          icon: 'store',
-          title: 'Differentiators',
-          subtitle: 'Business ownership mindset',
-          description:
-            'Prior experience as co-owner of my own business, handling financial, operational, and team management — a product mindset that goes beyond code.',
+          icon: 'database',
+          title: 'Data & Business Intelligence',
+          description: 'Pipelines and dashboards that turn scattered data into decisions.',
+          items: ['Power BI dashboards', 'SQL modeling', 'ETL pipelines', 'Python (Pandas, NumPy)'],
         },
       ],
+    },
+    about: {
+      heading: 'About Me',
+      kicker: 'Curious about my journey?',
+      paragraphs: [
+        "I'm a Full Stack Developer who evolved from data analytics into building complete digital products in under a year. Today I work at We.Go Smart Business, where I combined a solid data background with a new domain: Node.js, React, and PostgreSQL.",
+        'My differentiator is directing AI agents — Claude Code, LangChain, n8n — to architect, implement, and review features, acting as the technical lead of the process rather than coding line by line. This accelerates delivery without giving up solid architecture and quality.',
+      ],
+      traits: [
+        { icon: 'zap', text: 'Looking for remote and international opportunities' },
+        { icon: 'message', text: 'Open to asynchronous collaboration with distributed teams' },
+        { icon: 'smile', text: 'Direct, communicative, and always up for a conversation' },
+      ],
+      learnMore: 'See full experience',
     },
     experience: {
       heading: 'Professional Experience',
@@ -441,8 +549,9 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
       ],
     },
     projects: {
-      heading: 'Featured Projects',
+      heading: 'Selected Work',
       subheading: 'Real case studies demonstrating business problem-solving.',
+      seeAll: 'See GitHub profile',
       viewCase: 'View Case Study',
       close: 'Close',
       problemLabel: 'The Problem',
@@ -478,10 +587,55 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
         },
       ],
     },
+    process: {
+      heading: 'How I Work',
+      subheading: 'From requirement to deploy, a flow built to ship fast without losing quality.',
+      steps: [
+        {
+          number: '01',
+          category: 'Discovery & Architecture',
+          title: 'Understanding requirements and designing the solution',
+          description:
+            'I gather requirements with clients and business teams and design the architecture — database, APIs, and integrations — before writing the first line of code.',
+          meta: 'Week 1',
+        },
+        {
+          number: '02',
+          category: 'Build & Orchestration',
+          title: 'Directing AI agents to build',
+          description:
+            "I direct Claude Code and LangChain to implement features, reviewing every step — architecture, tests, integration — as the technical lead of the process.",
+          meta: 'Week 2-3',
+        },
+        {
+          number: '03',
+          category: 'Deploy & Monitoring',
+          title: 'Shipping and tracking in production',
+          description:
+            'Deployment on VPS, technical documentation of the solution, and metrics tracking to ensure stability after launch.',
+          meta: 'Week 4',
+        },
+      ],
+      codeLines: [
+        '$ claude-code "implement checkout API"',
+        '> planning changes across 4 files',
+        '> writing tests...',
+        '> architecture review ✓',
+        '> all tests passed ✓',
+      ],
+      dashboardTitle: 'Deploy Dashboard',
+      metrics: [
+        { label: 'Build', value: '100%' },
+        { label: 'Uptime', value: '99.9%' },
+        { label: 'Response time', value: '-35%' },
+      ],
+    },
     contact: {
-      heading: "Let's work together?",
-      subheading:
+      finalCtaHeading: "Let's create something great together",
+      finalCtaSubtext:
         "I'm ready to help your company build complete digital products. Reach out for a conversation.",
+      scheduleCall: 'Chat on WhatsApp',
+      sendMessage: 'Send a message',
       emailLabel: 'Email',
       phoneLabel: 'WhatsApp / Phone',
       locationLabel: 'Location',
@@ -498,6 +652,15 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
     footer: {
       rights: 'All rights reserved.',
       builtWith: 'Built with React & TailwindCSS',
+      quickLinksHeading: 'Quick Links',
+      quickLinks: [
+        { label: 'Work', href: '#work' },
+        { label: 'About', href: '#about' },
+        { label: 'Skills', href: '#skills' },
+        { label: 'Process', href: '#process' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Contact', href: '#contact' },
+      ],
     },
     chat: {
       title: "Andre's AI Assistant",

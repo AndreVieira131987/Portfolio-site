@@ -2,49 +2,79 @@ import React from 'react';
 import { useContent } from '../i18n/LanguageContext';
 import Icon from './iconMap';
 
-const ACCENTS = [
-  { bg: 'bg-violet-500/10', text: 'text-violet-400', blob: 'bg-violet-500/10' },
-  { bg: 'bg-purple-500/10', text: 'text-purple-400', blob: 'bg-purple-500/10' },
-  { bg: 'bg-blue-500/10', text: 'text-blue-400', blob: 'bg-blue-500/10' },
-  { bg: 'bg-pink-500/10', text: 'text-pink-400', blob: 'bg-pink-500/10' },
+const CODE_PREVIEW = [
+  { text: 'class FullStackDeveloper {', color: 'text-slate-300' },
+  { text: '  background = "data analytics";', color: 'text-slate-400' },
+  { text: '  stack = ["Node.js", "React", "PostgreSQL"];', color: 'text-emerald-400' },
+  { text: '  agents = ["Claude Code", "LangChain", "n8n"];', color: 'text-violet-400' },
+  { text: '', color: '' },
+  { text: '  ship() {', color: 'text-slate-300' },
+  { text: '    return "production-ready features";', color: 'text-amber-300' },
+  { text: '  }', color: 'text-slate-300' },
+  { text: '}', color: 'text-slate-300' },
 ];
 
 const About: React.FC = () => {
   const { about } = useContent();
 
   return (
-    <section id="about" className="py-24 bg-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{about.heading}</h2>
-          <div className="w-20 h-1.5 bg-violet-600 mx-auto rounded-full"></div>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-            {about.subheading}
-          </p>
-        </div>
+    <section id="about" className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-16">{about.heading}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {about.cards.map((card, index) => {
-            const accent = ACCENTS[index % ACCENTS.length];
-            return (
-              <div
-                key={card.title}
-                className="group p-8 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-violet-500/40 transition-all hover:shadow-xl hover:shadow-violet-500/5 relative overflow-hidden"
-              >
-                <div className={`absolute top-0 right-0 w-24 h-24 ${accent.blob} rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform`}></div>
-                <div className="relative z-10">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center shadow-sm mb-6 ${accent.bg} ${accent.text}`}>
-                    <Icon icon={card.icon} size={28} />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
-                  <p className={`text-sm font-semibold mb-4 ${accent.text}`}>{card.subtitle}</p>
-                  <p className="text-slate-400 leading-relaxed text-sm">
-                    {card.description}
-                  </p>
-                </div>
+        <div className="rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl p-4 sm:p-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+            {/* Code editor mockup */}
+            <div className="group rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] shadow-2xl shadow-black/50">
+              <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-red-500/70" />
+                <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                <span className="ml-3 text-xs text-slate-500 font-mono">andre.ts</span>
               </div>
-            );
-          })}
+              <div className="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
+                {CODE_PREVIEW.map((line, i) => (
+                  <div key={i} className={line.color || 'h-4'}>
+                    {line.text || ' '}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bio content */}
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-1">{about.kicker}</h3>
+              <div className="w-16 h-1 bg-white/20 rounded-full mb-6"></div>
+
+              <div className="space-y-4 mb-8">
+                {about.paragraphs.map((p, i) => (
+                  <p key={i} className="text-slate-400 leading-relaxed text-sm md:text-base">
+                    {p}
+                  </p>
+                ))}
+              </div>
+
+              <div className="space-y-3 mb-8">
+                {about.traits.map((trait) => (
+                  <div key={trait.text} className="flex items-center gap-3">
+                    <span className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-violet-300 flex-shrink-0">
+                      <Icon icon={trait.icon} size={16} />
+                    </span>
+                    <span className="text-sm text-slate-300">{trait.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="#experience"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-white border border-white/20 rounded-full px-5 py-2.5 hover:bg-white/10 transition-colors"
+              >
+                {about.learnMore} &rarr;
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,56 +1,52 @@
 import React, { useState } from 'react';
 import { Project } from '../types';
-import { ExternalLink, X, ChevronRight, BarChart } from 'lucide-react';
+import { ExternalLink, X, ChevronRight, BarChart, ArrowUpRight } from 'lucide-react';
 import { useContent } from '../i18n/LanguageContext';
+import { CONTACT_INFO } from '../constants';
 
 const Projects: React.FC = () => {
   const { projects } = useContent();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 bg-slate-900/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{projects.heading}</h2>
-          <p className="text-slate-400">{projects.subheading}</p>
+    <section id="work" className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-end justify-between mb-16 gap-4">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{projects.heading}</h2>
+            <p className="text-slate-400">{projects.subheading}</p>
+          </div>
+          <a
+            href={CONTACT_INFO.GITHUB}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white border border-white/10 rounded-full px-4 py-2 flex-shrink-0 hover:bg-white/5 transition-colors"
+          >
+            {projects.seeAll} <ArrowUpRight size={14} />
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.items.map((project) => (
             <div
               key={project.id}
-              className="group bg-slate-900/60 rounded-2xl overflow-hidden border border-slate-800 hover:border-violet-500/40 hover:shadow-2xl hover:shadow-violet-500/5 transition-all duration-300 flex flex-col h-full cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
-              <div className="relative h-64 overflow-hidden">
-                <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/0 transition-colors z-10" />
-                <img
-                  src={project.thumbnailUrl}
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute top-4 left-4 z-20 bg-slate-950/80 backdrop-blur text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-violet-300">
-                  {project.category}
-                </div>
+              <img
+                src={project.thumbnailUrl}
+                alt={project.title}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity" />
+
+              <div className="absolute top-4 left-4 bg-black/60 backdrop-blur text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-violet-300">
+                {project.category}
               </div>
 
-              <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-violet-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-400 line-clamp-3 mb-6 flex-grow">
-                  {project.problem}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tools.map((tool) => (
-                    <span key={tool} className="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded-md font-medium">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center text-violet-400 font-semibold text-sm group-hover:translate-x-2 transition-transform">
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
+                <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
+                <div className="flex items-center text-slate-300 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                   {projects.viewCase} <ChevronRight size={16} className="ml-1" />
                 </div>
               </div>
@@ -63,27 +59,26 @@ const Projects: React.FC = () => {
       {selectedProject && (
         <div className="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            {/* Overlay */}
             <div
-              className="fixed inset-0 bg-slate-950 bg-opacity-80 transition-opacity backdrop-blur-sm"
+              className="fixed inset-0 bg-black bg-opacity-80 transition-opacity backdrop-blur-sm"
               aria-hidden="true"
               onClick={() => setSelectedProject(null)}
             ></div>
 
             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-            <div className="inline-block align-bottom bg-slate-900 border border-slate-800 rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+            <div className="inline-block align-bottom bg-black/90 border border-white/10 rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full backdrop-blur-xl">
               <div className="absolute top-4 right-4 z-10">
                 <button
                   type="button"
-                  className="bg-slate-800 rounded-full p-2 text-slate-400 hover:text-white focus:outline-none"
+                  className="bg-white/10 rounded-full p-2 text-slate-300 hover:text-white focus:outline-none"
                   onClick={() => setSelectedProject(null)}
                 >
                   <X size={24} />
                 </button>
               </div>
 
-              <div className="bg-slate-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                     <h3 className="text-3xl leading-6 font-bold text-white mb-2" id="modal-title">
@@ -118,7 +113,7 @@ const Projects: React.FC = () => {
                           <BarChart size={20} className="text-violet-400"/>
                           {projects.previewLabel}
                         </h4>
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-800 bg-slate-950">
+                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-white/10 bg-black">
                           <iframe
                             title={selectedProject.title}
                             width="100%"
@@ -144,10 +139,10 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-slate-950/50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-slate-800">
+              <div className="bg-white/5 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-white/10">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-violet-600 text-base font-medium text-white hover:bg-violet-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-slate-200 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => setSelectedProject(null)}
                 >
                   {projects.close}

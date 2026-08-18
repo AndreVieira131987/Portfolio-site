@@ -1,5 +1,20 @@
 import React from 'react';
-import { Briefcase, Bot, Code2, Database, GraduationCap, Lightbulb, Package, Store, Users2 } from 'lucide-react';
+import {
+  Briefcase,
+  Bot,
+  Code2,
+  Database,
+  GraduationCap,
+  Layers,
+  Lightbulb,
+  MessageCircle,
+  Package,
+  Smile,
+  Store,
+  Users2,
+  Workflow,
+  Zap,
+} from 'lucide-react';
 import { IconKey } from '../types';
 
 const ICONS: Record<IconKey, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -13,6 +28,11 @@ const ICONS: Record<IconKey, React.ComponentType<{ size?: number; className?: st
   store: Store,
   package: Package,
   lightbulb: Lightbulb,
+  zap: Zap,
+  message: MessageCircle,
+  smile: Smile,
+  layers: Layers,
+  workflow: Workflow,
 };
 
 interface IconProps {

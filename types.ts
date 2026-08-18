@@ -22,7 +22,12 @@ export type IconKey =
   | 'graduation'
   | 'store'
   | 'package'
-  | 'lightbulb';
+  | 'lightbulb'
+  | 'zap'
+  | 'message'
+  | 'smile'
+  | 'layers'
+  | 'workflow';
 
 export interface SkillCategory {
   icon: IconKey;
@@ -30,11 +35,9 @@ export interface SkillCategory {
   items: string[];
 }
 
-export interface AboutCard {
+export interface AboutTrait {
   icon: IconKey;
-  title: string;
-  subtitle: string;
-  description: string;
+  text: string;
 }
 
 export interface ExperienceItem {
@@ -44,6 +47,26 @@ export interface ExperienceItem {
   period: string;
   location: string;
   bullets: string[];
+}
+
+export interface ServiceItem {
+  icon: IconKey;
+  title: string;
+  description: string;
+  items: string[];
+}
+
+export interface ProcessStep {
+  number: string;
+  category: string;
+  title: string;
+  description: string;
+  meta: string;
+}
+
+export interface QuickLink {
+  label: string;
+  href: string;
 }
 
 export interface ChatMessage {
