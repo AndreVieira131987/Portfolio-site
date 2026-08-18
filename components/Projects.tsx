@@ -1,15 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Project } from '../types';
 import { ExternalLink, X, ChevronRight, BarChart, ArrowUpRight } from 'lucide-react';
 import { useContent } from '../i18n/LanguageContext';
 import { CONTACT_INFO } from '../constants';
 
+const CARD_TRACK_PX = 65; // target scroll speed, in pixels per second
+const APPROX_CARD_WIDTH = 400; // card width + gap, used only to estimate how many repeats are needed
+
 const Projects: React.FC = () => {
   const { projects } = useContent();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [repeats, setRepeats] = useState(1);
+  const [duration, setDuration] = useState(30);
+  const rowRef = useRef<HTMLDivElement>(null);
 
-  const loopItems = [...projects.items, ...projects.items];
+  // One "set" must be wider than the viewport, or the looping track runs out of
+  // cards mid-scroll and shows a gap of empty space before it wraps around.
+  useEffect(() => {
+    const computeRepeats = () => {
+      const targetWidth = Math.max(2400, window.innerWidth * 1.3);
+      const perSet = projects.items.length * APPROX_CARD_WIDTH;
+      setRepeats(Math.max(1, Math.ceil(targetWidth / perSet)));
+    };
+    computeRepeats();
+    window.addEventListener('resize', computeRepeats);
+    return () => window.removeEventListener('resize', computeRepeats);
+  }, [projects.items.length]);
+
+  const oneSet = Array.from({ length: repeats }, () => projects.items).flat();
+  const loopItems = [...oneSet, ...oneSet];
+
+  // Measure the actual rendered width so the translateX(-50%) loop lines up
+  // exactly with the real card/gap sizes, and to derive a consistent speed.
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const halfWidth = el.scrollWidth / 2;
+    if (halfWidth > 0) setDuration(halfWidth / CARD_TRACK_PX);
+  }, [loopItems.length]);
 
   return (
     <section id="work" className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
@@ -38,8 +67,9 @@ const Projects: React.FC = () => {
         onTouchEnd={() => setIsPaused(false)}
       >
         <div
+          ref={rowRef}
           className="flex w-max gap-6 animate-marquee"
-          style={{ animationDuration: '45s', animationPlayState: isPaused ? 'paused' : 'running' }}
+          style={{ animationDuration: `${duration}s`, animationPlayState: isPaused ? 'paused' : 'running' }}
         >
           {loopItems.map((project, index) => (
             <div
