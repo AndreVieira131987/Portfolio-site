@@ -7,6 +7,9 @@ import { CONTACT_INFO } from '../constants';
 const Projects: React.FC = () => {
   const { projects } = useContent();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const loopItems = [...projects.items, ...projects.items];
 
   return (
     <section id="work" className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
@@ -25,12 +28,23 @@ const Projects: React.FC = () => {
             {projects.seeAll} <ArrowUpRight size={14} />
           </a>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.items.map((project) => (
+      <div
+        className="relative overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+      >
+        <div
+          className="flex w-max gap-6 animate-marquee"
+          style={{ animationDuration: '45s', animationPlayState: isPaused ? 'paused' : 'running' }}
+        >
+          {loopItems.map((project, index) => (
             <div
-              key={project.id}
-              className="group relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] cursor-pointer"
+              key={`${project.id}-${index}`}
+              className="group relative rounded-2xl overflow-hidden border border-white/10 w-[300px] sm:w-[380px] aspect-[4/3] flex-shrink-0 cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
               <img
@@ -53,6 +67,9 @@ const Projects: React.FC = () => {
             </div>
           ))}
         </div>
+
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-black to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-black to-transparent" />
       </div>
 
       {/* Project Modal */}

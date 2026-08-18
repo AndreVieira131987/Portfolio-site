@@ -38,9 +38,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#hero" className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white font-extrabold text-sm">
-              AV
-            </span>
+            <img src="/logo-mark.png" alt="Andre Vieira" className="h-10 w-10 object-contain" />
           </a>
 
           <div className="hidden md:flex items-center gap-1">

@@ -21,9 +21,7 @@ const Footer: React.FC = () => {
     <footer className="relative z-10 border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between gap-8">
         <div>
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white font-extrabold text-sm mb-4">
-            AV
-          </span>
+          <img src="/logo-mark.png" alt="Andre Vieira" className="h-10 w-10 object-contain mb-4" />
           <p className="text-slate-500 text-sm">&copy; {new Date().getFullYear()} Andre Vieira. {footer.rights}</p>
           <p className="text-slate-600 text-xs mt-1">{footer.builtWith}</p>
         </div>
