@@ -160,7 +160,7 @@ export const CONTENT: Record<Language, Content> = {
       ctaSecondary: 'Sobre mim',
       stats: [
         { value: '1+', label: 'Ano como Full Stack' },
-        { value: '2', label: 'Projetos entregues' },
+        { value: '10+', label: 'Projetos entregues' },
         { value: '4+', label: 'Ferramentas de IA orquestradas' },
       ],
     },
@@ -333,6 +333,20 @@ export const CONTENT: Record<Language, Content> = {
           thumbnailUrl: '/projects/mario-kart-thumbnail.png',
           embedUrl: 'https://andrevieiramariokart.netlify.app/',
         },
+        {
+          id: 'proj-04',
+          title: 'Paula Vieira Design — Site Pessoal',
+          category: 'Landing Page & Branding',
+          problem:
+            'Paula Vieira, designer gráfica e social media, precisava de um site pessoal com estética editorial de alta sofisticação para converter visitantes em clientes e reforçar sua autoridade digital.',
+          tools: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+          methodology:
+            'Construí uma identidade visual editorial (paleta rosa sofisticado e onyx, tipografia imponente) com React e Tailwind CSS, incluindo animações de scroll reveal com Framer Motion e um slider de projetos dentro de um mockup de iPhone interativo. Site 100% responsivo, publicado na Netlify.',
+          results:
+            'Presença digital premium no ar, com identidade visual coesa e navegação fluida em qualquer dispositivo, reforçando a autoridade da marca da cliente.',
+          thumbnailUrl: '/projects/paula-vieira-thumbnail.png',
+          embedUrl: 'https://paulavieiradesign.netlify.app/',
+        },
       ],
     },
     process: {
@@ -452,7 +466,7 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
       ctaSecondary: 'About me',
       stats: [
         { value: '1+', label: 'Year as Full Stack' },
-        { value: '2', label: 'Projects shipped' },
+        { value: '10+', label: 'Projects shipped' },
         { value: '4+', label: 'AI tools orchestrated' },
       ],
     },
@@ -624,6 +638,20 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
             'A study project consolidating programming logic and game rules, published with a playable two-player interface.',
           thumbnailUrl: '/projects/mario-kart-thumbnail.png',
           embedUrl: 'https://andrevieiramariokart.netlify.app/',
+        },
+        {
+          id: 'proj-04',
+          title: 'Paula Vieira Design — Personal Website',
+          category: 'Landing Page & Branding',
+          problem:
+            'Paula Vieira, a graphic designer and social media specialist, needed a personal website with a high-end editorial aesthetic to convert visitors into clients and reinforce her digital authority.',
+          tools: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+          methodology:
+            'Built an editorial visual identity (a sophisticated pink and onyx palette, bold typography) with React and Tailwind CSS, including Framer Motion scroll-reveal animations and an interactive project slider inside an iPhone mockup. Fully responsive site, deployed on Netlify.',
+          results:
+            "A premium digital presence live online, with a cohesive visual identity and smooth navigation on any device, reinforcing the client's brand authority.",
+          thumbnailUrl: '/projects/paula-vieira-thumbnail.png',
+          embedUrl: 'https://paulavieiradesign.netlify.app/',
         },
       ],
     },
