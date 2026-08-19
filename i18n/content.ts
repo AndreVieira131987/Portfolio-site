@@ -155,7 +155,7 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       headline: 'Full Stack Developer',
       subheadline:
-        'Construo aplicações completas — de interfaces em React a APIs em Node.js — e dirijo agentes de IA (Claude Code, LangChain) para arquitetar e entregar produtos com mais velocidade e qualidade.',
+        'Construo aplicações completas — de interfaces em React a APIs em Node.js — e dirijo agentes de IA para arquitetar e entregar produtos com mais velocidade e qualidade.',
       ctaPrimary: 'Ver meus projetos',
       ctaSecondary: 'Sobre mim',
       stats: [
@@ -203,7 +203,7 @@ export const CONTENT: Record<Language, Content> = {
       kicker: 'Curioso sobre minha trajetória?',
       paragraphs: [
         'Sou um Desenvolvedor Full Stack que evoluiu da análise de dados para a construção de produtos digitais completos em menos de um ano. Hoje atuo na We.Go Smart Business, onde uni a base sólida em dados a um novo domínio: Node.js, React e PostgreSQL.',
-        'Meu diferencial é dirigir agentes de IA — Claude Code, LangChain, n8n — para arquitetar, implementar e revisar funcionalidades, atuando como responsável técnico do processo em vez de codificar linha a linha. Isso acelera a entrega sem abrir mão de arquitetura sólida e qualidade.',
+        'Meu diferencial é dirigir agentes de IA para arquitetar, implementar e revisar funcionalidades, atuando como responsável técnico do processo em vez de codificar linha a linha. Isso acelera a entrega sem abrir mão de arquitetura sólida e qualidade.',
       ],
       traits: [
         { icon: 'zap', text: 'Buscando oportunidades remotas e internacionais' },
@@ -359,15 +359,15 @@ export const CONTENT: Record<Language, Content> = {
           title: 'Entendendo requisitos e desenhando a solução',
           description:
             'Levanto requisitos com clientes e áreas de negócio e desenho a arquitetura — banco de dados, APIs e integrações — antes de escrever a primeira linha de código.',
-          meta: 'Semana 1',
+          meta: 'Passo 1',
         },
         {
           number: '02',
           category: 'Construção & Orquestração',
           title: 'Direcionando agentes de IA para construir',
           description:
-            'Oriento o Claude Code e LangChain para implementar as funcionalidades, revisando cada etapa — arquitetura, testes e integração — como responsável técnico do processo.',
-          meta: 'Semana 2-3',
+            'Oriento agentes de IA para implementar as funcionalidades, revisando cada etapa — arquitetura, testes e integração — como responsável técnico do processo.',
+          meta: 'Passo 2',
         },
         {
           number: '03',
@@ -375,7 +375,7 @@ export const CONTENT: Record<Language, Content> = {
           title: 'Entregando e acompanhando em produção',
           description:
             'Deploy em VPS, documentação técnica da solução e acompanhamento de métricas para garantir estabilidade após o lançamento.',
-          meta: 'Semana 4',
+          meta: 'Passo 3',
         },
       ],
       codeLines: [
@@ -461,7 +461,7 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
     hero: {
       headline: 'Full Stack Developer',
       subheadline:
-        "I build complete applications — from React interfaces to Node.js APIs — and direct AI agents (Claude Code, LangChain) to architect and ship products faster without sacrificing quality.",
+        "I build complete applications — from React interfaces to Node.js APIs — and direct AI agents to architect and ship products faster without sacrificing quality.",
       ctaPrimary: 'View my work',
       ctaSecondary: 'About me',
       stats: [
@@ -509,7 +509,7 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
       kicker: 'Curious about my journey?',
       paragraphs: [
         "I'm a Full Stack Developer who evolved from data analytics into building complete digital products in under a year. Today I work at We.Go Smart Business, where I combined a solid data background with a new domain: Node.js, React, and PostgreSQL.",
-        'My differentiator is directing AI agents — Claude Code, LangChain, n8n — to architect, implement, and review features, acting as the technical lead of the process rather than coding line by line. This accelerates delivery without giving up solid architecture and quality.',
+        'My differentiator is directing AI agents to architect, implement, and review features, acting as the technical lead of the process rather than coding line by line. This accelerates delivery without giving up solid architecture and quality.',
       ],
       traits: [
         { icon: 'zap', text: 'Looking for remote and international opportunities' },
@@ -665,15 +665,15 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
           title: 'Understanding requirements and designing the solution',
           description:
             'I gather requirements with clients and business teams and design the architecture — database, APIs, and integrations — before writing the first line of code.',
-          meta: 'Week 1',
+          meta: 'Step 1',
         },
         {
           number: '02',
           category: 'Build & Orchestration',
           title: 'Directing AI agents to build',
           description:
-            "I direct Claude Code and LangChain to implement features, reviewing every step — architecture, tests, integration — as the technical lead of the process.",
-          meta: 'Week 2-3',
+            "I direct AI agents to implement features, reviewing every step — architecture, tests, integration — as the technical lead of the process.",
+          meta: 'Step 2',
         },
         {
           number: '03',
@@ -681,7 +681,7 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
           title: 'Shipping and tracking in production',
           description:
             'Deployment on VPS, technical documentation of the solution, and metrics tracking to ensure stability after launch.',
-          meta: 'Week 4',
+          meta: 'Step 3',
         },
       ],
       codeLines: [
