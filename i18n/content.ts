@@ -319,6 +319,20 @@ export const CONTENT: Record<Language, Content> = {
           thumbnailUrl: 'https://i.ibb.co/xKsd16qd/Captura-de-tela-2026-01-24-102842.png',
           embedUrl: 'https://oficinamclaren.netlify.app/',
         },
+        {
+          id: 'proj-03',
+          title: 'Mario Kart.JS — Simulador de Corridas',
+          category: 'Lógica de Jogos',
+          problem:
+            'Desafio de programação para simular corridas de Mario Kart, aplicando regras de jogo, aleatoriedade e atributos de personagens em uma lógica de partida completa.',
+          tools: ['JavaScript', 'Node.js', 'React', 'Vite'],
+          methodology:
+            'Motor de jogo em JavaScript puro simulando 5 rodadas de pista aleatória (reta, curva ou confronto), cruzando os atributos de Velocidade, Manobrabilidade e Poder de cada personagem com rolagens de dado — incluindo penalidades (casco, bomba) e bônus de turbo nos confrontos. Depois envolvi a lógica em uma interface React com seleção de personagens e placar em tempo real.',
+          results:
+            'Projeto de estudo consolidando lógica de programação e regras de jogo, disponibilizado publicamente com interface jogável para dois jogadores.',
+          thumbnailUrl: '/projects/mario-kart-thumbnail.png',
+          embedUrl: 'https://andrevieiramariokart.netlify.app/',
+        },
       ],
     },
     process: {
@@ -596,6 +610,20 @@ Se perguntarem sobre contato, informe o email: andre.vieira131987@gmail.com.
           results: 'Increased online visibility and lead generation through the site.',
           thumbnailUrl: 'https://i.ibb.co/xKsd16qd/Captura-de-tela-2026-01-24-102842.png',
           embedUrl: 'https://oficinamclaren.netlify.app/',
+        },
+        {
+          id: 'proj-03',
+          title: 'Mario Kart.JS — Race Simulator',
+          category: 'Game Logic',
+          problem:
+            'A coding challenge to simulate Mario Kart races, applying game rules, randomness, and character attributes in a complete match logic.',
+          tools: ['JavaScript', 'Node.js', 'React', 'Vite'],
+          methodology:
+            "Game engine in plain JavaScript simulating 5 rounds of randomized track segments (straight, curve, or duel), combining each character's Speed, Handling, and Power stats with dice rolls — including duel penalties (shell, bomb) and a turbo bonus chance. Wrapped the engine in a React interface with character selection and a live scoreboard.",
+          results:
+            'A study project consolidating programming logic and game rules, published with a playable two-player interface.',
+          thumbnailUrl: '/projects/mario-kart-thumbnail.png',
+          embedUrl: 'https://andrevieiramariokart.netlify.app/',
         },
       ],
     },

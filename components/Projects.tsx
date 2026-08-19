@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Project } from '../types';
 import { ExternalLink, X, ChevronRight, BarChart, ArrowUpRight } from 'lucide-react';
 import { useContent } from '../i18n/LanguageContext';
 import { CONTACT_INFO } from '../constants';
@@ -10,7 +9,10 @@ const APPROX_CARD_WIDTH = 400; // card width + gap, used only to estimate how ma
 
 const Projects: React.FC = () => {
   const { projects } = useContent();
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  // Store just the id (not the localized object) so the modal keeps showing the
+  // right project, in the right language, if the visitor toggles PT/EN while it's open.
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const selectedProject = projects.items.find((p) => p.id === selectedProjectId) ?? null;
   const [isPaused, setIsPaused] = useState(false);
   const [repeats, setRepeats] = useState(1);
   const [duration, setDuration] = useState(30);
@@ -76,7 +78,7 @@ const Projects: React.FC = () => {
             <div
               key={`${project.id}-${index}`}
               className="group relative rounded-2xl overflow-hidden border border-white/10 w-[300px] sm:w-[380px] aspect-[4/3] flex-shrink-0 cursor-pointer"
-              onClick={() => setSelectedProject(project)}
+              onClick={() => setSelectedProjectId(project.id)}
             >
               <img
                 src={project.thumbnailUrl}
@@ -112,7 +114,7 @@ const Projects: React.FC = () => {
             <div
               className="fixed inset-0 bg-black bg-opacity-80 transition-opacity backdrop-blur-sm"
               aria-hidden="true"
-              onClick={() => setSelectedProject(null)}
+              onClick={() => setSelectedProjectId(null)}
             ></div>
 
             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -122,7 +124,7 @@ const Projects: React.FC = () => {
                 <button
                   type="button"
                   className="bg-white/10 rounded-full p-2 text-slate-300 hover:text-white focus:outline-none"
-                  onClick={() => setSelectedProject(null)}
+                  onClick={() => setSelectedProjectId(null)}
                 >
                   <X size={24} />
                 </button>
@@ -193,7 +195,7 @@ const Projects: React.FC = () => {
                 <button
                   type="button"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-slate-200 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={() => setSelectedProject(null)}
+                  onClick={() => setSelectedProjectId(null)}
                 >
                   {projects.close}
                 </button>
