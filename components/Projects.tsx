@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Project } from '../types';
 import { ExternalLink, X, ChevronRight, BarChart, ArrowUpRight } from 'lucide-react';
 import { useContent } from '../i18n/LanguageContext';
@@ -102,8 +103,10 @@ const Projects: React.FC = () => {
         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-black to-transparent" />
       </div>
 
-      {/* Project Modal */}
-      {selectedProject && (
+      {/* Project Modal — portalled to <body> so it isn't trapped inside this
+          section's stacking context (created by its own relative+z-index),
+          which would otherwise let the fixed header paint on top of it. */}
+      {selectedProject && createPortal(
         <div className="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div
@@ -197,7 +200,8 @@ const Projects: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
